@@ -1,0 +1,45 @@
+<div id="map-container" style="position: relative; width: 100%; height: 82vh;">
+  <!-- Mapa -->
+  <div id="map" style="width: 100%; height: 100%;"></div>
+
+  <!-- Control de Geolocalización -->
+  <leaflet-locate-control [map]="map" [options]="locateOptions" (location$)="onLocationFound($event)">
+  </leaflet-locate-control>
+
+  <!-- Formulario de Viaje -->
+  <div class="form-overlay"
+    style="position: absolute; bottom: 10px; left: 10px; right: 10px; background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+    <form [formGroup]="formDatosAuto">
+
+      <!-- Campo de Patente -->
+      <div class="text-start" style="margin-bottom: 1rem;">
+        <label for="patente" class="form-label" style="font-weight: bold;">Patente</label>
+        <input id="patente" class="form-control" formControlName="patente" placeholder="Ingrese su patente"
+          aria-label="Patente del vehículo" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;" />
+        <div *ngIf="formDatosAuto.get('patente').invalid && formDatosAuto.get('patente').touched"
+          style="color: red; font-size: 14px;">
+          La patente es obligatoria.
+        </div>
+      </div>
+
+      <!-- Campo de Capacidad -->
+      <div class="text-start" style="margin-bottom: 1rem;">
+        <label for="capacidad" class="form-label" style="font-weight: bold;">Capacidad</label>
+        <input type="number" id="capacidad" class="form-control" formControlName="capacidad"
+          placeholder="Ingrese la capacidad" aria-label="Capacidad del vehículo"
+          style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;" />
+        <div *ngIf="formDatosAuto.get('capacidad').invalid && formDatosAuto.get('capacidad').touched"
+          style="color: red; font-size: 14px;">
+          La capacidad es obligatoria.
+        </div>
+        <!-- Botón de Crear Viaje -->
+        <div style="text-align: center;">
+          <ion-button [disabled]="formDatosAuto.invalid || routeCoordinates.length === 0" color="secondary"
+            style="font-size: 13px; margin-top: 3%;" (click)="createJourney()">
+            Crear viaje
+          </ion-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

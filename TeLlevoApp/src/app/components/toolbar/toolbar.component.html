@@ -1,0 +1,27 @@
+<ion-toolbar>
+  <div class="toolbar-content">
+    <div class="logo-container">
+      <a class="navbar-brand" routerLink="/home/map">
+        <img
+          src="assets/images/imagen-presentacion.png"
+          alt="Logo"
+          class="logo"
+        />
+      </a>
+      <span>Ruta disponible</span>
+    </div>
+
+    <div>
+      <ion-button color="danger" class="toolbar-button" (click)="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </ion-button>
+      <ion-button
+        color="primary"
+        class="toolbar-button"
+        routerLink="/home/qr-scanner"
+      >
+        QR
+      </ion-button>
+    </div>
+  </div>
+</ion-toolbar>

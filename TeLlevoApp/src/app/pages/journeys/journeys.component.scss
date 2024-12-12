@@ -1,0 +1,31 @@
+.viaje-item {
+  margin: 4% 5%;
+  border-radius: 10px;
+  border: 1px solid var(--ion-color-primary-shade);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.viaje-info {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.viaje-icon {
+  margin-right: 10px;
+  color: #477aba;
+}
+
+.viaje-patente {
+  background-color: #477aba;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: inline-block;
+  white-space: nowrap;
+}

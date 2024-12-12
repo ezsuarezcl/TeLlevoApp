@@ -1,0 +1,91 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <!-- Título -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <h1 class="text-center" style="font-size: 32px; margin-top: 20%; font-weight: bold;">
+          Inicia sesión en
+        </h1>
+        <h2 class="text-center" style="font-size: 44px; font-weight: bold; margin-bottom: 10%;">
+          TeLLevo<span style="color: #2bd4f5;">APP</span>
+        </h2>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <!-- Formulario -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col size="10">
+        <div style="padding: 2rem; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+          <form [formGroup]="formLogin" (ngSubmit)="onSubmitLogin()">
+            <!-- Campo de correo -->
+            <div class="text-start" style="margin-bottom: 1rem;">
+              <label for="correo" class="form-label" style="font-weight: bold;">Correo</label>
+              <input
+                type="email"
+                id="correo"
+                class="form-control"
+                placeholder="Ingrese su correo"
+                formControlName="correo"
+                aria-label="Correo electrónico"
+                style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"
+              />
+              <span
+                *ngIf="formLogin.get('correo').invalid && formLogin.get('correo').touched"
+                style="color: red; font-size: 14px;">
+                Por favor, ingrese un correo válido.
+              </span>
+            </div>
+
+            <!-- Campo de contraseña -->
+            <div class="text-start" style="margin-bottom: 1rem;">
+              <label for="contrasena" class="form-label" style="font-weight: bold;">Contraseña</label>
+              <input
+                type="password"
+                id="contrasena"
+                class="form-control"
+                placeholder="Ingrese su contraseña"
+                formControlName="contrasena"
+                aria-label="Contraseña"
+                style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"
+              />
+              <span
+                *ngIf="formLogin.get('contrasena').invalid && formLogin.get('contrasena').touched"
+                style="color: red; font-size: 14px;">
+                La contraseña es obligatoria.
+              </span>
+            </div>
+
+            <!-- Botones -->
+            <div class="text-center">
+              <ion-button
+                shape="round"
+                color="secondary"
+                type="submit"
+                [disabled]="!formLogin.valid"
+                style="width: 220px; font-size: 18px; margin-bottom: 1rem;">
+                Iniciar sesión
+              </ion-button>
+              <ion-button
+                shape="round"
+                color="secondary"
+                routerLink="/register"
+                style="width: 220px; font-size: 18px;">
+                Crear cuenta
+              </ion-button>
+            </div>
+          </form>
+        </div>
+        <!-- Recuperar contraseña -->
+        <div class="text-center" style="margin-top: 1rem;">
+          <a routerLink="/password-restore" style="color: #2bd4f5; text-decoration: none; font-weight: bold;">
+            Recuperar contraseña
+          </a>
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

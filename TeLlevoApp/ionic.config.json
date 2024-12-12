@@ -1,0 +1,7 @@
+{
+  "name": "parcial-crud",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

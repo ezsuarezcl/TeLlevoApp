@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-list [inset]="true" style="border-radius: 10px;">
+
+    <!-- Mensaje cuando no hay viajes -->
+    <div *ngIf="journeys.length === 0" style="text-align: center; margin-top: 2rem; color: #666;">
+      <ion-icon name="sad-outline" style="font-size: 3rem; color: #bbb;"></ion-icon>
+      <p style="font-size: 1.2rem; margin-top: 1rem;">
+        No existen viajes por el momento.
+      </p>
+    </div>
+
+    <ion-item *ngFor="let journey of journeys" (click)="showRoute(journey)" class="viaje-item"
+      [attr.aria-label]="'Viaje de ' + journey.nameCreator">
+
+      <!-- Contenedor de información del viaje -->
+      <div class="viaje-info">
+        <i class="fa-solid fa-car-side fa-2xl viaje-icon"></i>
+        <div>
+          <ion-label>
+            <strong>{{ journey.nameCreator }}</strong>
+            <div style="margin-top: 4px;">Máximo: {{ journey.capacity }}</div>
+          </ion-label>
+        </div>
+      </div>
+
+      <!-- Patente del vehículo, al final del item -->
+      <div class="viaje-patente">
+        {{ journey.carRegistration }}
+      </div>
+
+    </ion-item>
+  </ion-list>
+</ion-content>

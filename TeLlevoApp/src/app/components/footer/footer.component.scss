@@ -1,0 +1,8 @@
+.footer-button {
+  width: 170px;
+  font-size: 13px;
+}
+
+.footer-button:last-child {
+  margin-right: 0; /* Quita margen del último botón */
+}

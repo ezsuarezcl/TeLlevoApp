@@ -1,0 +1,13 @@
+<!-- For camera -->
+<div>
+  <ngx-scanner-qrcode #action="scanner"></ngx-scanner-qrcode>
+</div>
+
+<!-- Loading -->
+<p *ngIf="action.isLoading">⌛ Loading...</p>
+
+<!-- start -->
+<div style="text-align: center;">
+<ion-button (click)="action.isStart ? action.stop() : action.start()">{{action.isStart ? 'Detener' : 'Iniciar'}}</ion-button>
+<ion-button (click)="onScanSuccess(action.data.value[0].value)"> Escanear</ion-button>
+</div>

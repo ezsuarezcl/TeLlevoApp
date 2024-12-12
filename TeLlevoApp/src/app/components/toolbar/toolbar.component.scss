@@ -1,0 +1,23 @@
+.toolbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 10px;
+  width: 40px; /* Ajusta el tamaño según sea necesario */
+}
+
+.toolbar-button {
+  align-items: center;
+  color: white;
+}

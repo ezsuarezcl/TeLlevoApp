@@ -1,0 +1,69 @@
+<ion-content>
+  <ion-list [inset]="true" style="border-radius: 10px;">
+
+    <!-- Mensaje cuando no hay viajes -->
+    <div *ngIf="myJourneys.length === 0" style="text-align: center; margin-top: 2rem; color: #666">
+      <ion-icon name="sad-outline" style="font-size: 3rem; color: #bbb"></ion-icon>
+      <p style="font-size: 1.2rem; margin-top: 1rem">
+        No tienes viajes relacionados por el momento.
+      </p>
+    </div>
+
+    <!-- Tarjetas de viajes -->
+    <ion-card *ngFor="let journey of myJourneys" style="
+        background-color: #ffffff;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      ">
+      <ion-card-content style="padding: 1rem">
+        <!-- Información del viaje -->
+        <ion-label style="display: block; margin-bottom: 1rem">
+          <h2 style="font-size: 1.2rem; font-weight: bold; color: #333">
+            {{ journey.nameCreator }}
+          </h2>
+          <div style="font-size: 0.9rem; color: #666">
+            Máximo: {{ journey.capacity }}
+          </div>
+          <div style="font-size: 0.9rem; color: #666">
+            Patente: {{ journey.carRegistration }}
+          </div>
+          <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #444">
+            Pasajeros:
+            {{
+            journey.passengers?.length
+            ? journey.passengers.join(", ")
+            : "No hay pasajeros"
+            }}
+          </p>
+        </ion-label>
+
+        <!-- Botones según rol del usuario -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem">
+          <ng-container *ngIf="journey.driver === userEmail">
+            <ion-button (click)="deleteJourney(journey.uid)" color="danger" expand="block"
+              style="flex: 1; font-size: 0.85rem" aria-label="Eliminar viaje">
+              Eliminar viaje
+            </ion-button>
+          </ng-container>
+          <ng-container *ngIf="journey.passengers?.includes(userEmail)">
+            <ion-button (click)="leaveJourney(journey.uid)" color="warning" expand="block"
+              style="flex: 1; font-size: 0.85rem" aria-label="Salir del viaje">
+              Salir del viaje
+            </ion-button>
+          </ng-container>
+        </div>
+
+        <!-- Botón para mostrar QR si el usuario es el conductor -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem">
+          <ng-container *ngIf="journey.driver === userEmail">
+            <ion-button (click)="showQRCode(journey.uid)" color="tertiary" expand="block"
+              style="flex: 1; font-size: 0.85rem" aria-label="Ver QR del viaje">
+              Ver QR
+            </ion-button>
+          </ng-container>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

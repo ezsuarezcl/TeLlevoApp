@@ -1,0 +1,97 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <!-- Título -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <h1 class="text-center" style="font-size: 32px; margin-top: 20%; font-weight: bold;">
+          Regístrate en
+        </h1>
+        <h2 class="text-center" style="font-size: 44px; font-weight: bold; margin-bottom: 10%;">
+          TeLLevo<span style="color: #2bd4f5;">APP</span>
+        </h2>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <!-- Formulario -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col size="10">
+        <div style="padding: 2rem; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+          <form [formGroup]="formRegister" (ngSubmit)="onSubmitRegister()">
+
+            <!-- Campo de nombre -->
+            <div class="text-start" style="margin-bottom: 1rem;">
+              <label for="name" class="form-label" style="font-weight: bold;">Nombre</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                placeholder="Ingrese su nombre"
+                formControlName="name"
+                aria-label="Nombre"
+                style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"
+              />
+              <span
+                *ngIf="formRegister.get('name').invalid && formRegister.get('name').touched"
+                style="color: red; font-size: 14px;">
+                Por favor, ingrese un nombre.
+              </span>
+            </div>
+
+            <!-- Campo de correo -->
+            <div class="text-start" style="margin-bottom: 1rem;">
+              <label for="email" class="form-label" style="font-weight: bold;">Correo</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="Ingrese su correo"
+                formControlName="email"
+                aria-label="Correo electrónico"
+                style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"
+              />
+              <span
+                *ngIf="formRegister.get('email').invalid && formRegister.get('email').touched"
+                style="color: red; font-size: 14px;">
+                Por favor, ingrese un correo válido.
+              </span>
+            </div>
+
+            <!-- Campo de contraseña -->
+            <div class="text-start" style="margin-bottom: 1rem;">
+              <label for="password" class="form-label" style="font-weight: bold;">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                placeholder="Ingrese su contraseña"
+                formControlName="password"
+                aria-label="Contraseña"
+                style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;"
+              />
+              <span
+                *ngIf="formRegister.get('password').invalid && formRegister.get('password').touched"
+                style="color: red; font-size: 14px;">
+                Por favor, ingrese una contraseña válida.
+              </span>
+            </div>
+
+            <!-- Botón de Crear Cuenta -->
+            <ion-button
+              expand="block"
+              shape="round"
+              color="secondary"
+              type="submit"
+              [disabled]="!formRegister.valid"
+              style="width: 100%; font-size: 16px; margin-top: 1.5rem;">
+              Crear cuenta
+            </ion-button>
+          </form>
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
